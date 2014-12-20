@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../patient-card/patient-card.html">
+
+<polymer-element name="patients-list" attributes="">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <div horizontal around-justified layout wrap>
+      <template repeat="{{p in patients}}">
+        <patient-card patient="{{p}}"></patient-card>
+      </template>
+    </div>
+  </template>
+  <script src="../../data/patients.js" ></script>
+  <script>
+    (function () {
+
+      Polymer({
+        ready: function(){
+          console.log(patients);
+          this.patients = patients;
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>

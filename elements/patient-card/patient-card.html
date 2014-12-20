@@ -1,0 +1,89 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+
+<polymer-element name="patient-card" attributes="patient">
+  <template>
+    <style>
+      :host {
+        display: block;
+        margin-bottom: 30px;
+      }
+      #cardContainer {
+        padding: 30px;
+      }
+      #cardContainer core-icon{
+        position: absolute;
+        right: 5px;
+      }
+      core-icon[top]{
+        top: 5px;
+      }
+      #pName {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+      }
+      .card-body {
+        margin-bottom: 5px;
+      }
+      @media only screen and (min-width: 320px) {
+        :host {
+          width: 100% !important;
+        }
+      }
+      @media only screen and (min-width: 480px) {
+
+      }
+      @media only screen and (min-width: 768px) {
+
+      }
+      @media only screen and (min-width: 992px) {
+        :host {
+          width: auto !important;
+          min-width: 28% !important;
+        }
+      }
+      @media only screen and (min-width: 1200px) {
+
+      }
+    </style>
+    <paper-shadow id="elShadow" z="1" animated>
+      <div id="cardContainer" vertical layout on-tap="{{changeZ}}">
+        <core-icon top icon="editor:mode-edit" on-tap="{{changeZ}}" self-end></core-icon>
+        <div id="pName" class=".card-body">{{patient.pName}}</div>
+        <div id="pDoB" class=".card-body">{{patient.pDoB}}</div>
+        <div id="pGender" class=".card-body">{{patient.pGender}}</div>
+        <div id="pCity" class=".card-body">{{patient.pCity}}/{{patient.pState}}</div>
+        <div id="pEducation" class=".card-body">{{patient.pEducation}}</div>
+        <div id="pCase" class=".card-body">{{patient.pCase}}</div>
+        <core-icon icon="delete" on-tap="{{changeZ}}" self-end></core-icon>
+      </div>
+    </paper-shadow>
+  </template>
+  <script>
+    (function () {
+
+      Polymer({
+        publish: {
+          patient: null
+        },
+        domReady: function(){
+          console.log(this.patient);
+        },
+        changeZ: function(el){
+          iconType = el.path[0].icon;
+          z = 1;
+          fontColor = "#000";
+          if (iconType == 'delete'){
+            z = 0;
+            fontColor = "#CCC";
+          }
+          if (iconType == 'editor:mode-edit'){z = 2}
+          console.log(z);
+          this.$.elShadow.setZ(z);
+          this.$.cardContainer.style.color = fontColor;
+        }
+      });
+
+    })();
+  </script>
+</polymer-element>

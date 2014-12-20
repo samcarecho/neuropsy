@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NeuroPsy</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent" >
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="icon" sizes="96x96" href="icons/icon-96.png">
+  <meta name="application-name" content="NeuroPsy">
+
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild-->
+
+  <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:vulcanized elements/elements.vulcanized.html -->
+  <link rel="import" href="elements/elements.html">
+  <!-- endbuild-->
+  <link rel="import" href="bower_components.html">
+</head>
+
+<body unresolved fullbleed>
+
+<core-drawer-panel>
+  <core-header-panel mode="waterfall-tall" flex drawer>
+    <core-toolbar class="core-header" id="panel-head">
+      <core-icon icon="editor:mode-edit"></core-icon>
+      <div class="middle" vertical layout>
+        <div id="userName">
+          <span>Cláudia Maia Memória</span>
+        </div>
+        <div id="userTitle">
+          <span>Neuropsicóloga</span>
+        </div>
+        <div id="userCRP">
+          <span>CRP 04/21356</span>
+        </div>
+        <div id="userEmail">
+          <span>claudiamemoria@gmail.com</span>
+        </div>
+      </div>
+    </core-toolbar>
+    <core-menu on-tap="{{goTo}}" flex id="panel-list" class="content">
+      <paper-item href="/add-patient">
+        <core-icon icon="polymer"></core-icon>
+        Novo Paciente
+      </paper-item>
+      <paper-item href="/">
+        <core-icon icon="polymer"></core-icon>
+        Pacientes
+      </paper-item>
+      <hr>
+      <paper-item href="/add-valuation">
+        <core-icon icon="polymer"></core-icon>
+        Nova Avaliação
+      </paper-item>
+      <paper-item href="/valuations-list">
+        <core-icon icon="polymer"></core-icon>
+        Avaliações
+      </paper-item>
+      <hr>
+      <paper-item href="/print">
+        <core-icon icon="polymer"></core-icon>
+        Imprimir
+      </paper-item>
+      <paper-item href="/help">
+        <core-icon icon="polymer"></core-icon>
+        Ajuda & Feedback
+      </paper-item>
+    </core-menu>
+  </core-header-panel>
+  <core-header-panel main>
+    <core-toolbar>
+      <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
+      <paper-icon-button icon="polymer"></paper-icon-button>
+      <span flex>NeuroPsy</span>
+    </core-toolbar>
+    <core-animated-pages selected="{{orderedIndex}}" transitions="slide-from-right" main>
+      <section>
+        <!-- / -->
+        <patients-list></patients-list>
+        <paper-fab icon="add" class="red"
+                   on-tap="{{goTo}}" href="/add-patient"></paper-fab>
+      </section>
+      <section>
+        <!-- /add-patient -->
+        <div>TODO: /add-patient</div>
+      </section>
+      <section>
+        <!-- /add-valuation -->
+        <div>TODO: /add-valuation</div>
+      </section>
+      <section>
+        <!-- /valuations-list -->
+        <div>TODO: /valuations-list</div>
+      </section>
+      <section>
+        <!-- /print -->
+        <div>TODO: /print</div>
+      </section>
+      <section>
+        <!-- /help -->
+        <div>TODO: /help</div>
+      </section>
+    </core-animated-pages>
+  </core-header-panel>
+</core-drawer-panel>
+
+  <!-- build:js scripts/app.js -->
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
+</body>
+
+</html>
